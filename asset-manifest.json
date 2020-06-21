@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/piramide-usuarios/static/css/main.dd6e4ef8.chunk.css",
+    "main.js": "/piramide-usuarios/static/js/main.08f20080.chunk.js",
+    "main.js.map": "/piramide-usuarios/static/js/main.08f20080.chunk.js.map",
+    "runtime-main.js": "/piramide-usuarios/static/js/runtime-main.772e4478.js",
+    "runtime-main.js.map": "/piramide-usuarios/static/js/runtime-main.772e4478.js.map",
+    "static/js/2.8a3f819e.chunk.js": "/piramide-usuarios/static/js/2.8a3f819e.chunk.js",
+    "static/js/2.8a3f819e.chunk.js.map": "/piramide-usuarios/static/js/2.8a3f819e.chunk.js.map",
+    "index.html": "/piramide-usuarios/index.html",
+    "precache-manifest.84042141e194ff1f0b13651a5576109e.js": "/piramide-usuarios/precache-manifest.84042141e194ff1f0b13651a5576109e.js",
+    "service-worker.js": "/piramide-usuarios/service-worker.js",
+    "static/css/main.dd6e4ef8.chunk.css.map": "/piramide-usuarios/static/css/main.dd6e4ef8.chunk.css.map",
+    "static/js/2.8a3f819e.chunk.js.LICENSE.txt": "/piramide-usuarios/static/js/2.8a3f819e.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.772e4478.js",
+    "static/js/2.8a3f819e.chunk.js",
+    "static/css/main.dd6e4ef8.chunk.css",
+    "static/js/main.08f20080.chunk.js"
+  ]
+}

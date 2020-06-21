@@ -1,0 +1,1 @@
+{"version":3,"sources":["searchBar.css"],"names":[],"mappings":"AAAA,oBACI,2BAA6B,CAC7B,uBACJ","file":"main.dd6e4ef8.chunk.css","sourcesContent":[".results.transition{\r\n    position: relative !important;\r\n    margin: 0px auto !important;\r\n}"]}
