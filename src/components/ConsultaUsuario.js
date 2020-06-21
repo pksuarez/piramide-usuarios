@@ -140,7 +140,7 @@ class ConsultaUsuario extends React.Component{
         await this.obtenerUsuarios()
         try{
             this.source = this.state.users.map(user => {
-                return ({title:user.nombre + " " + user.apellido + " " + user.apellido2})
+                return ({title:user.nombre + " " + user.apellido + " " + user.apellido2,description:user.cedula})
             });  
         }
         catch{}

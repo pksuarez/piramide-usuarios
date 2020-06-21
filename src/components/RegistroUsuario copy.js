@@ -1,15 +1,11 @@
 import React from 'react';
 import usuarios from '../apis/usuarios';
-import _ from 'lodash';
-import {Search} from 'semantic-ui-react';   
-import '../css/searchBar.css';
-
-
+import _ from 'lodash'
 
 
 class RegistroUsuario extends React.Component{
 
-    state = { usuario:{isLoading: false, results: [], value: '', cedula:"",nombre:"",apellido:"",apellido2:"",padre:""}, users:[], mensaje:"", source:[]}
+    state = { usuario:{cedula:"",nombre:"",apellido:"",apellido2:"",padre:""}, users:[], mensaje:""}
     
     crearUsuario = async () =>{   
         let request = await usuarios.post('/users',this.state.usuario);
@@ -19,33 +15,8 @@ class RegistroUsuario extends React.Component{
     obtenerUsuarios = async () => {
         let users = await usuarios.get('/users')
         users = users.data;
+        console.log(users);
         await this.setState({users})
-    }
-
-    generateSource = async () => {
-        try{
-            console.log(this.state.users)
-            let source = await this.state.users.map(user => {
-                return ({title:user.nombre + " " + user.apellido + " " + user.apellido2, description:user.cedula})
-            });  
-
-            await this.setState({source});
-
-        }
-        catch{}
-    }
-
-    generateSource2 = () => {
-        try{
-            console.log(this.state.users)
-            let source = this.state.users.map(user => {
-                return ({title:user.nombre + " " + user.apellido + " " + user.apellido2, description:user.cedula})
-            });  
-
-            this.setState({source});
-
-        }
-        catch{}
     }
     
     borrarUsuario = id => {
@@ -74,61 +45,27 @@ class RegistroUsuario extends React.Component{
     onFormSubmit = async (e) =>{
         e.preventDefault();
         this.setState({usuario:{cedula:"",nombre:"",apellido:"",apellido2:"",padre:""},mensaje:""})
-        setTimeout(() => {this.obtenerUsuarios();this.generateSource();
-        },300)
+        setTimeout(() => this.obtenerUsuarios(),300)
         
     }
 
-    handleResultSelect = async(e, { result }) => {
-        this.setState({ value: result.title, factura:false })
-        this.setState({usuario:{...this.state.usuario,padre:result.description}});
-
-        try{
-        }
-        catch{}
+    componentDidMount(){
+        this.obtenerUsuarios();
     }
-
-    handleSearchChange = (e, { value }) => {
-        this.setState({ isLoading: true, value})
-
-        setTimeout(() => {
-        if (this.state.value.length < 1) 
-            return this.setState({isLoading: false, results: [], value: ''})
-
-        const re = new RegExp(_.escapeRegExp(this.state.value), 'i')
-        const isMatch = (result) => re.test(result.title)
-
-        this.setState({
-            isLoading: false,
-            results: _.filter(this.state.source, isMatch),
-        })
-        }, 300)
-    }
-    
-    async componentDidMount(){
-        await this.obtenerUsuarios();
-        await this.generateSource();
-    }
-
     render(){
-        this.generateSource2();
-        const { isLoading, value, results } = this.state;
         return(
             <div>
                 <form className="ui form" onSubmit={this.onFormSubmit}>
                     <div className="field">
                         < label>Padre</label>
-                        <Search
-                        style={{width:"20%", margin:"0px auto"}}
-                        loading={isLoading}
-                        onResultSelect={this.handleResultSelect}
-                        onSearchChange={_.debounce(this.handleSearchChange, 500, {
-                        leading: true,
-                        })}
-                        results={results}
-                        value={value}
-                        {...this.props}
-                    />
+                        <select className="ui search fluid dropdown" name="padre" onChange={this.onInputChange} defaultValue="" style={{width:"20%", margin:"0px auto"}}>
+                            <option></option>
+                            {this.state.users.map((user => {
+                                return(
+                                    <option key={user.id} value={user.cedula}>{`${user.nombre} ${user.apellido} ${user.apellido2}`}</option>
+                                )
+                            }))}
+                        </select>
                     </div>
                     <div className="field">
                         <label>Cédula</label>
