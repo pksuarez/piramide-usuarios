@@ -25,15 +25,12 @@ class ConsultaFactura extends React.Component{
     }
 
     obtenerUsuario = async (cedula) =>{
-        console.log("obtener usuario", cedula);
         let user = await usuarios.get(`/users?cedula=${cedula}`)
         user = user.data;
-        console.log(user);
         this.setState({user})
     }
 
     obtenerPadre = async (cedula) =>{
-        console.log("obtener padre", cedula);
         let padre = await usuarios.get(`/users?cedula=${cedula}`)
         padre = padre.data;
         this.setState({padre})
@@ -42,7 +39,6 @@ class ConsultaFactura extends React.Component{
     obtenerFactura = async (numero) =>{
         let factura = await usuarios.get(`/facturas?numero=${numero}`)
         factura = factura.data;
-        console.log(factura);
         this.setState({factura})
     }
 

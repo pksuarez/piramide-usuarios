@@ -22,22 +22,8 @@ class RegistroUsuario extends React.Component{
         await this.setState({users})
     }
 
-    generateSource = async () => {
+    generateSource = () => {
         try{
-            console.log(this.state.users)
-            let source = await this.state.users.map(user => {
-                return ({title:user.nombre + " " + user.apellido + " " + user.apellido2, description:user.cedula})
-            });  
-
-            await this.setState({source});
-
-        }
-        catch{}
-    }
-
-    generateSource2 = () => {
-        try{
-            console.log(this.state.users)
             let source = this.state.users.map(user => {
                 return ({title:user.nombre + " " + user.apellido + " " + user.apellido2, description:user.cedula})
             });  
@@ -50,23 +36,22 @@ class RegistroUsuario extends React.Component{
     
     borrarUsuario = id => {
         usuarios.delete(`/users/2`);
-        console.log(usuarios.delete(`/users/${id}`));
     }
     
     onInputChange = e => {
-        if (e.target.name =="cedula"){
+        if (e.target.name ==="cedula"){
             this.setState({ usuario:{...this.state.usuario,cedula: _.capitalize(e.target.value)}});
         }
-        if (e.target.name =="nombre"){
+        if (e.target.name ==="nombre"){
             this.setState({ usuario:{...this.state.usuario,nombre: _.capitalize(e.target.value)}});
         }
-        if (e.target.name =="apellido"){
+        if (e.target.name ==="apellido"){
             this.setState({ usuario:{...this.state.usuario,apellido: _.capitalize(e.target.value)}});
         }
-        if (e.target.name =="apellido2"){
+        if (e.target.name ==="apellido2"){
             this.setState({ usuario:{...this.state.usuario,apellido2: _.capitalize(e.target.value)}});
         }
-        if (e.target.name =="padre"){
+        if (e.target.name ==="padre"){
             this.setState({usuario:{...this.state.usuario,padre:e.target.value}});
         }
     }
@@ -74,7 +59,7 @@ class RegistroUsuario extends React.Component{
     onFormSubmit = async (e) =>{
         e.preventDefault();
         this.setState({usuario:{cedula:"",nombre:"",apellido:"",apellido2:"",padre:""},mensaje:""})
-        setTimeout(() => {this.obtenerUsuarios();this.generateSource();
+        setTimeout(() => {this.obtenerUsuarios();
         },300)
         
     }
@@ -107,11 +92,11 @@ class RegistroUsuario extends React.Component{
     
     async componentDidMount(){
         await this.obtenerUsuarios();
-        await this.generateSource();
     }
 
     render(){
-        this.generateSource2();
+        if (this.state.users.length!==this.state.source.length)
+            this.generateSource();
         const { isLoading, value, results } = this.state;
         return(
             <div>
@@ -132,19 +117,19 @@ class RegistroUsuario extends React.Component{
                     </div>
                     <div className="field">
                         <label>Cédula</label>
-                        <input required="true" name="cedula" value={this.state.usuario.cedula} type='text' onChange={this.onInputChange} style={{width:'20%'}}/>
+                        <input required={true} name="cedula" value={this.state.usuario.cedula} type='text' onChange={this.onInputChange} style={{width:'20%'}}/>
                     </div>
                     <div className="field">
                         <label>Nombre</label>
-                        <input required="true" name="nombre" value={this.state.usuario.nombre} type='text' onChange={this.onInputChange} style={{width:'20%'}}/>
+                        <input required={true} name="nombre" value={this.state.usuario.nombre} type='text' onChange={this.onInputChange} style={{width:'20%'}}/>
                     </div>
                     <div className="field">
                         <label>Apellido</label>
-                        <input required="true" name="apellido" value={this.state.usuario.apellido} type='text' onChange={this.onInputChange} style={{width:'20%'}}/>
+                        <input required={true} name="apellido" value={this.state.usuario.apellido} type='text' onChange={this.onInputChange} style={{width:'20%'}}/>
                     </div>
                     <div className="field">
                         <label>Apellido 2</label>
-                        <input required="true" name="apellido2" value={this.state.usuario.apellido2} type='text' onChange={this.onInputChange} style={{width:'20%'}}/>
+                        <input required={true} name="apellido2" value={this.state.usuario.apellido2} type='text' onChange={this.onInputChange} style={{width:'20%'}}/>
                     </div>
                     <button className="ui button" type="submit" onClick={()=>{this.crearUsuario(this.state.usuario);
 }}>Confirmar</button>

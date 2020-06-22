@@ -27,12 +27,10 @@ class ConsultaUsuario extends React.Component{
     obtenerUsuario = async (nombre, apellido, apellido2) =>{
         let user = await usuarios.get(`/users?nombre=${nombre}&apellido=${apellido}&apellido2=${apellido2}`)
         user = user.data;
-        console.log(user);
         this.setState({user})
     }
 
     obtenerPadre = async (cedula) =>{
-        console.log("obtener padre", cedula);
         let padre = await usuarios.get(`/users?cedula=${cedula}`)
         padre = padre.data;
         this.setState({padre})
