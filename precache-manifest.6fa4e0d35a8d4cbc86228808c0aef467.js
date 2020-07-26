@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b65d5a8337b17924fc20dfae9c24cde6",
+    "revision": "df9564da181df65cc5e7295ff8297453",
     "url": "/piramide-usuarios/index.html"
   },
   {
-    "revision": "e499a764686fa86860ae",
-    "url": "/piramide-usuarios/static/css/main.dd6e4ef8.chunk.css"
+    "revision": "4d8b7a316219cca831c0",
+    "url": "/piramide-usuarios/static/css/main.9ae4d888.chunk.css"
   },
   {
     "revision": "0496b541e198a98fca4c",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/piramide-usuarios/static/js/2.8a3f819e.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "e499a764686fa86860ae",
+    "revision": "4d8b7a316219cca831c0",
     "url": "/piramide-usuarios/static/js/main.e114ce0c.chunk.js"
   },
   {

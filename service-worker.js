@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/piramide-usuarios/precache-manifest.45bd266ebe96828057558ac10e00d143.js"
+  "/piramide-usuarios/precache-manifest.6fa4e0d35a8d4cbc86228808c0aef467.js"
 );
 
 self.addEventListener('message', (event) => {
