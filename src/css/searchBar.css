@@ -2,3 +2,14 @@
     position: relative !important;
     margin: 0px auto !important;
 }
+
+@media (max-width:600px){
+    .ui.search{
+        width: 70% !important;
+        margin: 0px auto !important;
+    }
+
+    input{
+        width: 70% !important;
+    }
+}
